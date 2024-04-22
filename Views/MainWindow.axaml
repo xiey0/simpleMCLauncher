@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:mcMVVM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="500"
+        x:Class="mcMVVM.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="mcMVVM" Width="450" Height="500" CanResize="False">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+		
+		
+    </Design.DataContext>
+
+	<Grid RowDefinitions="0.5*,*,*,.3*" ColumnDefinitions="*,0.3*" ShowGridLines="True" >
+		<Menu VerticalAlignment="Top">
+			<MenuItem Header="启动器">
+				<MenuItem Header="关于" Click="MenuItem_Click_2"/>
+				<Separator/>
+				<MenuItem Header="退出" Click="MenuItem_Click_1"/>
+			</MenuItem>
+			<MenuItem Header="游戏">
+
+			</MenuItem>
+			<MenuItem Header="工具">
+				<MenuItem Header="	NBT查看"/>
+				<MenuItem Header="区块编辑器"/>
+				
+			</MenuItem>
+		</Menu>
+		<StackPanel VerticalAlignment="Bottom">
+			<StackPanel >
+				<Grid ShowGridLines="True" ColumnDefinitions="*,.1*">
+									<TextBox VerticalAlignment="Center" Text="{Binding GameDir, Mode=TwoWay}"/>	
+					<Button Grid.Column="1" Content="..." />
+				</Grid>
+		<Button Content="Test" Click="Button_Click_4"/>
+			</StackPanel>
+			
+				<Label x:Name="GameDirDet" Content="Man"/>
+
+		</StackPanel>
+
+        <Button Grid.Row="3" Grid.Column="1" Margin="10" Content="Start Game"  Click="Button_Click" CornerRadius="3"/>
+		<StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="1">
+			<ListBox x:Name="VerList">
+
+			</ListBox>
+			<Button Click="Button_Click_3" Content="Check"/>
+			<Label x:Name="VersionID" Content="" />
+		</StackPanel>
+	</Grid>
+</Window>

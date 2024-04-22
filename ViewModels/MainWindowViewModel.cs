@@ -1,5 +1,6 @@
 ﻿using mcMVVM.Views;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.ComponentModel;
 
 namespace mcMVVM.ViewModels
@@ -11,11 +12,11 @@ namespace mcMVVM.ViewModels
 
 #pragma warning disable CA1822 // Mark members as static
         public static string GameDir {
-            get => gamedir;
+            get => gamedir!;
             set { gamedir = value; }
 
         }
-        public static string gamedir;
+        public static string? gamedir = "F:\\keke";
 
     }
 

@@ -8,11 +8,13 @@ using MinecraftLaunch.Components.Resolver;
 using MinecraftLaunch.Extensions;
 using MinecraftLaunch.Utilities;
 using System.Xml.Linq;
+using mcMVVM.Views;
 
 namespace mcMVVM
 {
     class Launch
     {
+
         
         public static async void Launcher(string name = "Steve", bool fullscreen = false, string gamefolderdir = "F:\\keke", string jdir = "C:\\Program Files\\Zulu\\zulu-17\\bin\\javaw.exe", string verid = "1.20.1")
         {
@@ -39,7 +41,7 @@ namespace mcMVVM
             IGameProcessWatcher gameProcessWatcher = await launcher.LaunchAsync(verid);
             
         }
-        public static async void Launcher(string verid = "1.20.1")
+        public static async void Launcher(string verid = "1.20.1", string gamefolder="F:\\keke")
         {
             OfflineAuthenticator offlineAuthenticator = new("Steve");
             var userProfile = offlineAuthenticator.Authenticate();
@@ -59,9 +61,22 @@ namespace mcMVVM
                 },
                 IsEnableIndependencyCore = true
             };
-            IGameResolver resolver = new GameResolver("F:\\keke");
+            IGameResolver resolver = new GameResolver(gamefolder);
             Launcher launcher = new(resolver, config);
-            IGameProcessWatcher gameProcessWatcher = await launcher.LaunchAsync(verid);
+
+
+            try
+            {
+                IGameProcessWatcher gameProcessWatcher = await launcher.LaunchAsync(verid);
+
+            }
+            catch (System.NullReferenceException e)
+            {
+               
+
+            }
+
+
         }
 
     }

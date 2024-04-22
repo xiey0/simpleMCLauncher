@@ -7,7 +7,7 @@
         x:Class="mcMVVM.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="mcMVVM" Width="450" Height="500" CanResize="False">
+        Title="mcMVVM" Width="450" Height="500" CanResize="false">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -48,11 +48,12 @@
 
         <Button Grid.Row="3" Grid.Column="1" Margin="10" Content="Start Game"  Click="Button_Click" CornerRadius="3"/>
 		<StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="1">
-			<ListBox x:Name="VerList">
+			<ListBox x:Name="VerList" >
 
 			</ListBox>
 			<Button Click="Button_Click_3" Content="Check"/>
 			<Label x:Name="VersionID" Content="" />
 		</StackPanel>
+		<Label Content="Debug" Grid.Column="1" Grid.Row="1" x:Name="debugView"/>
 	</Grid>
 </Window>

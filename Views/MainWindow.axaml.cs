@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace mcMVVM.Views
@@ -13,12 +14,24 @@ namespace mcMVVM.Views
             {
                 "1.19.4", "1.20.1", "1.20.2", "1.20.4"
             }.OrderBy(x => x);
+            VerList.SelectedIndex = 0;
              
         }
 
+
+
         private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            Launch.Launcher(VerList.SelectedItem.ToString()!);
+            try
+            {
+                
+                Launch.Launcher(VerList.SelectedItem.ToString(), ViewModels.MainWindowViewModel.GameDir);
+
+            }
+            catch(System.NullReferenceException ex)
+            {
+                debugView.Content += ex.ToString();
+            }
             
         }
 
@@ -41,7 +54,14 @@ namespace mcMVVM.Views
 
         private void Button_Click_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            GameDirDet.Content = ViewModels.MainWindowViewModel.GameDir.ToString();
+            try
+            {
+                GameDirDet.Content = ViewModels.MainWindowViewModel.GameDir;
+
+            }
+            catch (System.NullReferenceException ex) {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

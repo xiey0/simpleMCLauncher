@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using mcMVVM.ViewModels;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -24,15 +25,16 @@ namespace mcMVVM.Views
         {
             try
             {
-                
+
                 Launch.Launcher(VerList.SelectedItem.ToString(), ViewModels.MainWindowViewModel.GameDir);
 
             }
-            catch(System.NullReferenceException ex)
+            catch (System.NullReferenceException ex)
             {
-                debugView.Content += ex.ToString();
+                MainWindowViewModel.DebugConsole += ex.ToString();
+
+                MainWindowViewModel.DebugConsole += "Failed.";
             }
-            
         }
 
         private void MenuItem_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

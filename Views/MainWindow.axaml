@@ -54,6 +54,6 @@
 			<Button Click="Button_Click_3" Content="Check"/>
 			<Label x:Name="VersionID" Content="" />
 		</StackPanel>
-		<Label Content="Debug" Grid.Column="1" Grid.Row="1" x:Name="debugView"/>
+		<TextBlock TextWrapping="Wrap" Text="{Binding DebugConsole}" Grid.Column="1" Grid.Row="1" x:Name="debugView"/>
 	</Grid>
 </Window>

@@ -9,6 +9,7 @@ using MinecraftLaunch.Extensions;
 using MinecraftLaunch.Utilities;
 using System.Xml.Linq;
 using mcMVVM.Views;
+using mcMVVM.ViewModels;
 
 namespace mcMVVM
 {
@@ -72,7 +73,7 @@ namespace mcMVVM
             }
             catch (System.NullReferenceException e)
             {
-               
+                MainWindowViewModel.DebugConsole += @"e.ToString()";
 
             }
 

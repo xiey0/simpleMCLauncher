@@ -16,6 +16,12 @@ namespace mcMVVM.ViewModels
             set { gamedir = value; }
 
         }
+        public static string DebugConsole
+        {
+            get => debugtext;
+            set { debugtext = value ; }
+        }
+        public static string? debugtext = "Debug\n";
         public static string? gamedir = "F:\\keke";
 
     }

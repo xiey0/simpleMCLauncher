@@ -3,6 +3,7 @@
         xmlns:vm="using:mcMVVM.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="500"
         x:Class="mcMVVM.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -28,14 +29,14 @@
 
 			</MenuItem>
 			<MenuItem Header="工具">
-				<MenuItem Header="	NBT查看"/>
+				<MenuItem Header="	NBT编辑器"/>
 				<MenuItem Header="区块编辑器"/>
 				
 			</MenuItem>
 		</Menu>
 		<StackPanel VerticalAlignment="Bottom">
 			<StackPanel >
-				<Grid ShowGridLines="True" ColumnDefinitions="*,.1*">
+				<Grid ShowGridLines="False" ColumnDefinitions="*,.1*">
 									<TextBox VerticalAlignment="Center" Text="{Binding GameDir, Mode=TwoWay}"/>	
 					<Button Grid.Column="1" Content="..." />
 				</Grid>
@@ -54,6 +55,21 @@
 			<Button Click="Button_Click_3" Content="Check"/>
 			<Label x:Name="VersionID" Content="" />
 		</StackPanel>
+		<Grid Grid.Row="2" Grid.Column="0">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal"  VerticalAlignment="Top" Margin="20">
+					<RadioButton Content="Offline" GroupName="Mode" IsChecked="True"/>
+					<RadioButton Content="Microsoft Account" GroupName="Mode" />
+					<RadioButton Content="Other " GroupName="Mode"/>
+
+				</StackPanel>
+				<Label Content="Name"/>
+				<TextBox/>
+			</StackPanel>
+
+		</Grid>
+
+
 		<TextBlock TextWrapping="Wrap" Text="{Binding DebugConsole}" Grid.Column="1" Grid.Row="1" x:Name="debugView"/>
 	</Grid>
 </Window>

@@ -11,7 +11,7 @@
   
     <Application.Styles>
         <SimpleTheme/>
-		<StyleInclude Source="/TemplatedControl1.axaml"></StyleInclude>
+		
     </Application.Styles>
 	
 	<Application.Resources>

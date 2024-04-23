@@ -42,18 +42,55 @@ namespace mcMVVM
             IGameProcessWatcher gameProcessWatcher = await launcher.LaunchAsync(verid);
             
         }
-        public static async void Launcher(string verid = "1.20.1", string gamefolder="F:\\keke")
+        public static async void Launcher(string name, bool isFullscreen, string verid = "1.20.1", string gamefolder = "F:\\keke", int Width = 856, int Height = 482)
         {
-            OfflineAuthenticator offlineAuthenticator = new("Steve");
+            OfflineAuthenticator offlineAuthenticator = new(name);
             var userProfile = offlineAuthenticator.Authenticate();
             LaunchConfig config = new LaunchConfig
             {
                 Account = userProfile,
                 GameWindowConfig = new GameWindowConfig
                 {
-                    Width = 1280,
-                    Height = 800,
-                    IsFullscreen = false
+                    Width = Width,
+                    Height = Height,
+                    IsFullscreen = isFullscreen
+                },
+                JvmConfig = new JvmConfig("C:\\Program Files\\Zulu\\zulu-17\\bin\\javaw.exe")
+                {
+                    MaxMemory = 4096,
+
+                },
+                IsEnableIndependencyCore = true
+            };
+            IGameResolver resolver = new GameResolver(gamefolder);
+            Launcher launcher = new(resolver, config);
+
+
+            try
+            {
+                IGameProcessWatcher gameProcessWatcher = await launcher.LaunchAsync(verid);
+
+            }
+            catch (System.NullReferenceException e)
+            {
+                MainWindowViewModel.DebugConsole += @"e.ToString()";
+
+            }
+
+
+        }
+        public static async void Launcher(bool isFullscreen, string name,  string verid = "1.20.1", string gamefolder = "F:\\keke", int Width = 856, int Height = 482)
+        {
+            OfflineAuthenticator offlineAuthenticator = new(name);
+            var userProfile = offlineAuthenticator.Authenticate();
+            LaunchConfig config = new LaunchConfig
+            {
+                Account = userProfile,
+                GameWindowConfig = new GameWindowConfig
+                {
+                    Width = Width,
+                    Height = Height,
+                    IsFullscreen = isFullscreen
                 },
                 JvmConfig = new JvmConfig("C:\\Program Files\\Zulu\\zulu-17\\bin\\javaw.exe")
                 {

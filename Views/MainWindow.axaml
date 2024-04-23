@@ -51,11 +51,21 @@
 
         <Button Grid.Row="3" Grid.Column="1" Margin="10" Content="Start Game"  Click="Button_Click" CornerRadius="3"/>
 		<StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="1">
-			<ListBox x:Name="VerList" >
+			<ListBox x:Name="VerList"  >
 
 			</ListBox>
 			<Button Click="Button_Click_3" Content="Check"/>
 			<Label x:Name="VersionID" Content="" />
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<CheckBox x:Name="CResIsEnable" Checked="CheckBox_Checked_7" Unchecked="CheckBox_Unchecked_8"/>
+				<Label Content="自定义分辨率："/>
+				<TextBox x:Name="MCWidth" />
+				<Label Content="x" />
+				<TextBox x:Name="MCHeight"  />
+				
+
+			</StackPanel>
+			<CheckBox HorizontalAlignment="Center" Content="全屏启动" x:Name="isFullscreen"/>
 		</StackPanel>
 		<Grid Grid.Row="2" Grid.Column="0">
 			<StackPanel>
@@ -63,10 +73,12 @@
 					<RadioButton x:Name="RBOffline" Content="Offline" GroupName="Mode" IsChecked="True" Unchecked="RadioButton_Unchecked_5" Checked="RadioButton_Checked_6" />
 					<RadioButton x:Name="RBMS" Content="Microsoft Account" GroupName="Mode" />
 					<RadioButton x:Name="RBOTHER" Content="Other " GroupName="Mode"/>
-					<TextBlock Text="{Binding IsOffline}"/>
-
+					
 				</StackPanel>
-				<controls:TemplatedControl1 x:Name="OfflineTC" IsVisible="{Binding IsOffline,Mode=TwoWay}" ></controls:TemplatedControl1>
+						<StackPanel Margin="10" x:Name="OfflineUI">
+							<Label Content="Name"/>
+							<TextBox Text="Steve" x:Name="NameField" />
+						</StackPanel>
 			</StackPanel>
 
 		</Grid>

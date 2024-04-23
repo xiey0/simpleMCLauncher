@@ -31,18 +31,7 @@ namespace mcMVVM.ViewModels
         public static string? gamedir = "F:\\keke";
 #pragma warning disable CA1822 // Mark members as static
 
-        public static bool? IsOffline
-        {
-            get => isoffline;
-            set
-            {
-                isoffline= value; 
-            }
 
-        }
-#pragma warning disable CA1822 // Mark members as static
-
-        public static bool? isoffline = true;
     }
 
 

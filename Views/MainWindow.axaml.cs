@@ -16,6 +16,7 @@ namespace mcMVVM.Views
                 "1.19.4", "1.20.1", "1.20.2", "1.20.4"
             }.OrderBy(x => x);
             VerList.SelectedIndex = 0;
+            
              
         }
 
@@ -64,6 +65,16 @@ namespace mcMVVM.Views
             catch (System.NullReferenceException ex) {
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        private void RadioButton_Unchecked_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            MainWindowViewModel.IsOffline = false;
+        }
+
+        private void RadioButton_Checked_6(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            MainWindowViewModel.IsOffline = true;
         }
     }
 }

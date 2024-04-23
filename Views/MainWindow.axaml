@@ -8,7 +8,9 @@
         x:Class="mcMVVM.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="mcMVVM" Width="450" Height="500" CanResize="false">
+        Title="mcMVVM" Width="450" Height="500" CanResize="false"
+		xmlns:controls ="clr-namespace:mcMVVM"
+		>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -58,13 +60,13 @@
 		<Grid Grid.Row="2" Grid.Column="0">
 			<StackPanel>
 				<StackPanel Orientation="Horizontal"  VerticalAlignment="Top" Margin="20">
-					<RadioButton Content="Offline" GroupName="Mode" IsChecked="True"/>
-					<RadioButton Content="Microsoft Account" GroupName="Mode" />
-					<RadioButton Content="Other " GroupName="Mode"/>
+					<RadioButton x:Name="RBOffline" Content="Offline" GroupName="Mode" IsChecked="True" Unchecked="RadioButton_Unchecked_5" Checked="RadioButton_Checked_6" />
+					<RadioButton x:Name="RBMS" Content="Microsoft Account" GroupName="Mode" />
+					<RadioButton x:Name="RBOTHER" Content="Other " GroupName="Mode"/>
+					<TextBlock Text="{Binding IsOffline}"/>
 
 				</StackPanel>
-				<Label Content="Name"/>
-				<TextBox/>
+				<controls:TemplatedControl1 x:Name="OfflineTC" IsVisible="{Binding IsOffline,Mode=TwoWay}" ></controls:TemplatedControl1>
 			</StackPanel>
 
 		</Grid>
